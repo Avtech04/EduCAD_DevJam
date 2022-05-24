@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Educational_Platform</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="css/style.css"> -->
+  <link rel="stylesheet" href=" https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .header {
+    padding: 0 4.8rem;
+    height: 10rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1e6161;
+
+
+    /* background-color: #e7f5ff; */
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: yellow;
+  }
+
+  .hero {
+    display: block;
+    box-sizing: border-box;
+    height: 500px;
+    background-color: #1e6161;
+    clip-path: ellipse(90% 100% at 26.8% 0%);
+  }
+
+  .logo1 {
+    margin: 6px auto;
+    /* text-align: center; */
+    display: block;
+    width: 72%;
+  }
+
+  .coupon {
+    border: 5px dotted #bbb;
+    width: 80%;
+    border-radius: 15px;
+    margin: 2rem auto;
+    max-width: 600px;
+  }
+
+  .container1 {
+    padding: 2px 16px;
+    background-color: #f1f1f1;
+  }
+
+  .promo {
+    background: #23355d;
+    color: white;
+    padding: 3px
+  }
+
+  .expire {
+    color: red;
+  }
+
+  .grid2 {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .purchase {
+    margin: 9px 7px;
+    text-align: center;
+    font-size: 1.6rem;
+  }
+
+  .purchase:hover {
+    color: red;
+  }
+
+  .para {
+    color: black;
+  }
+
+  .grid-threes-col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media only screen and (max-width:1050px) {
+    .content {
+      position: absolute;
+      top: 18rem;
+      left: 6rem
+    }
+  }
+
+  @media only screen and (max-width:664px) {
+    .content {
+      position: absolute;
+      top: 18rem;
+      left: 6rem
+    }
+  }
+
+  @media only screen and (max-width:631px) {
+
+    .grid-threes-col {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    .coupan {
+      width: 48%;
+    }
+  }
+
+  @media only screen and (max-width:286px) {
+
+    .hero-heading {
+      font-size: 4rem;
+      color: white;
+    }
+  }
+
+  :root {
+    --heading: rgb(0 10 45);
+    --para: #777777;
+    --para-tint: #e4e4e4;
+    --third: #fff;
+    --helper: #8490ff;
+    --helper-tint: #f3f4ff;
+    --bg: rgb(249 249 255);
+    --gradient: linear-gradient(0deg, rgb(132 144 255) 0%, rgb(98 189 252) 100%);
+    --shadpw: 0px 0px 20px 0px rgb(132 144 255 / 20%);
+  }
+
+  /* swiper section */
+  .swiper {
+    width: 100%;
+    height: 100%;
+    margin-top: 9rem;
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    /* background: #fff; */
+
+    /* Center slide text vertically */
+    display: flex;
+    flex-direction: column;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    margin-bottom: 5rem;
+  }
+
+  .swiper-client-msg {
+    padding: 5rem 8rem;
+    background-color: var(--third);
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: var(--shadpw);
+    position: relative;
+  }
+
+  .swiper-client-msg::before {
+    content: "";
+    position: absolute;
+    bottom: -10rem;
+    left: 50%;
+    transform: translateX(-50%);
+    /* width: 5rem;
+  height: 5rem; */
+    border: 5rem solid var(--third);
+    border-color: transparent;
+    border-top-color: var(--third);
+  }
+
+  .swiper-client-msg p::before {
+    content: "\f10d";
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 2rem;
+    font-size: 5rem;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: #ced3ff;
+  }
+
+  .swiper-client-msg p::after {
+    /* display: inline-block */
+    content: "\f10e";
+    position: absolute;
+    bottom: 0%;
+    right: 5%;
+
+    font-size: 5rem;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: #ced3ff;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .swiper-client-data {
+    align-items: center;
+    justify-items: start;
+    justify-content: start;
+    gap: 1.4rem;
+    margin-top: 3.2rem;
+  }
+
+  .swiper-client-data img {
+    max-width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    border: 0.5rem solid #ced3ff;
+  }
+
+  .swiper-client-data p:first-child {
+    font-weight: bold;
+    color: var(--heading);
+  }
+
+  .navbar-list {
+    display: flex;
+  }
+
+  .navbar-link {
+    padding: 4px 26px;
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+  }
+
+  /* scroll section */
+  .scrollTop-style {
+    position: fixed;
+    right: 2%;
+    bottom: 5%;
+    z-index: 1;
+  }
+
+  .scroll-top {
+    width: 4rem;
+    height: 4rem;
+    background: var(--helper);
+    display: inline-block;
+    padding: 1.4rem 1.8rem;
+    position: relative;
+    color: var(--white);
+    animation: water-wave 3s linear infinite;
+    cursor: pointer;
+  }
+
+  .section {
+    padding: 4rem 0;
+    max-width: 90vw;
+    margin: auto;
+  }
+
+  .section1 {
+    padding: 9rem 0;
+  }
+
+  .section3 {
+    padding: 4rem 0;
+  }
+
+  .subscription {
+    box-shadow: 0px 0px 20px 0px rgb(132 144 255 / 20%);
+    max-width: 80vw;
+    margin: auto;
+  }
+
+  .sub_para {
+    max-width: 60%;
+    margin-left: 79px;
+    margin-bottom: 22px;
+  }
+
+  /* ===========================================
+app Section
+======================================= */
+
+  .section-app {
+    background-image: url("images/13.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    text-align: center;
+    position: relative;
+    background-attachment: fixed;
+  }
+
+  .section-app .overlay {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #3e64ff;
+    opacity: 0.7;
+  }
+
+  .section-app .container {
+    position: relative;
+  }
+
+  .section-app h2 {
+    font-size: 5.4rem;
+  }
+
+  .section-app h2 span {
+    color: #a0f669;
+  }
+
+  .section-app h2,
+  .section-app p {
+    color: var(--third);
+    margin-bottom: 1.8rem;
+  }
+
+
+  /* ===========================================
+ Section courses
+======================================= */
+
+  .section-courses {
+    background-color: var(--bg);
+  }
+
+  .section-courses p,
+  .section-services p {
+    max-width: 63rem;
+    margin-left: 3rem;
+  }
+
+  .courses-images {
+    gap: 3.2rem;
+    margin-top: 6.4rem;
+  }
+
+  .img-ovelay {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .courses-images img {
+    width: 100%;
+    border-radius: 7px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .img-ovelay .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: -webkit-linear-gradient(0deg,
+        rgb(132 144 255) 0%,
+        rgb(98 189 252) 100%);
+    opacity: 0;
+    color: var(--third);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(100%);
+    transition: all 0.3s linear;
+    border-radius: 7px;
+    /* box-shadow: inset 0 0 0 0.5rem var(--helper-tint); */
+  }
+
+  .img-ovelay:hover>.overlay {
+    opacity: 0.8;
+    transform: translateY(0);
+    cursor: pointer;
+  }
+
+  .img-ovelay .overlay .common-heading {
+    margin: 0;
+    color: var(--third);
+    text-decoration: none;
+  }
+
+  /* ===========================================
+data data Section
+======================================= */
+  .section-data-data {
+    background: -webkit-linear-gradient(0deg,
+        rgb(132 144 255) 0%,
+        rgb(98 189 252) 100%);
+    color: var(--third);
+    text-align: center;
+  }
+
+  .common-numbers {
+    font-size: 4.8rem;
+  }
+
+  .section-data-data p {
+    color: var(--third);
+  }
+</style>
+
+<body>
+
+  <header class="header sticky">
+    <img src="images/logo.png" alt="avtech logo" class="logo" />
+    <nav class="navbar ">
+      <ul class="navbar-list">
+        <li><a class="navbar-link home-link" href="#">Home</a></li>
+        <li><a class="navbar-link about-link" href="#explain">About</a></li>
+        <li><a class="navbar-link service-link" href="#services-section">Services</a></li>
+        <li><a class="navbar-link courses-link" href="#courses-section">Courses</a></li>
+        <li><a class="navbar-link" href="#contact-section">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ======================================== 
+          EduCAD Hero Section Start  
+    ========================================  -->
+
+
+  <div class="hero section-hero">
+    <div class="content">
+      <h1 class="hero_heading">EDUCAD</h1>
+      <p class="hero_para">India`s Best Educational Platform</p>
+      <a href="login.php"> <button type="button" class="signup">Start Learning</button></a>
+
+    </div>
+  </div>
+  <div class="explain" id="explain">
+    <h2 class="common-heading">Why EDUCAD</h2>
+    <p>EDUCAD is the best platform of providing quality education. EDUCAD delivers its services at any time and at every
+      corner of the world . EDUCAD is the future of online learning. We provide our services free or at very affordable
+      price.Our platform provides facilities like video content, live test , creating personal notes functionality,
+      solutions(NCERT) and many more things.Education lessens the challenges you will face in life. The more knowledge
+      you gain the more opportunities will open up to allow individuals to achieve better possibilities in career and
+      personal growth.
+    </p>
+  </div>
+
+
+  <!-- ======================================== 
+          EduCAD Service Section Start  
+    ========================================  -->
+  <section class="section-services section  " id="services-section">
+    <div class="container">
+      <h2 class="common-heading">Service Offers</h2>
+      <p>
+        Our platform EDUCAD provides different services such as regular tests,Performance Analysis,quality education,
+        video lectures and many more.</p>
+    </div>
+
+    <div class="container grid grid-three-col">
+      <div class="service-box">
+        <ion-icon name="alarm-outline" class="service-icon"></ion-icon>
+        <h3>Regular Tests</h3>
+        <p>“EduCad provides regular test papers to encourage students to attempt more test and improve their performance
+          every time. We give the feel of real test environment. ”</p>
+      </div>
+
+      <div class="service-box">
+        <ion-icon name="book-outline" class="service-icon"></ion-icon>
+        <h3>Quality Education</h3>
+        <p>“EduCad never compromises with the quality of the education we are delivering. We go forward improving our
+          services and maintaining our quality of education.”
+        </p>
+      </div>
+
+      <div class="service-box">
+        <ion-icon name="videocam-outline" class="service-icon"></ion-icon>
+        <h3>Recorded lectures</h3>
+        <p>“We provide recorderd vedio lectures to students to strengthen their concepts through visulalisation and they
+          can post their doubt as well.”
+        </p>
+      </div>
+
+      <div class="service-box">
+        <ion-icon name="stats-chart-outline" class="service-icon"></ion-icon>
+        <h3>Performance Analysis</h3>
+        <p>“Performance analysis is done after every test a student attempted so that he/she can improve or don`t repeat
+          their mistakes next time.”
+        </p>
+      </div>
+
+      <div class="service-box">
+        <ion-icon name="people-outline" class="service-icon"></ion-icon>
+        <h3>Best guidance</h3>
+        <p>“EduCad gives best guidance to student as guidance is a process of assisting the individual student to reach
+          optimum educational development.”
+        </p>
+      </div>
+
+      <div class="service-box">
+        <ion-icon name="pricetags-outline" class="service-icon"></ion-icon>
+        <h3>Cost effecient</h3>
+        <p>“EduCad provides its services at very affordable prices. So that even a poor child can easily afford quality
+          education .”
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ======================================== 
+          EduCAD data counter section Start  
+    ========================================  -->
+
+
+  <section class="section-data-data section1 ">
+    <div class="container grid grid-four-col">
+      <div>
+        <h2 data-number="300" class="counter-numbers">0+</h2>
+        <p>Tests</p>
+      </div>
+      <div>
+        <h2 data-number="200" class="counter-numbers">0+</h2>
+        <p>Video resources</p>
+      </div>
+      <div>
+        <h2 data-number="500" class="counter-numbers">0+</h2>
+        <p>Users</p>
+      </div>
+      <div>
+        <h2 data-number="3000" class="counter-numbers">0+</h2>
+        <p>Best Results</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ======================================== 
+          EduCAD courses section Start  
+    ========================================  -->
+
+  <section class="section-courses section " id="courses-section">
+    <div class="container">
+      <h2 class="common-heading">Our Courses</h2>
+      <p>
+        We offer different Courses for class 6-9, class 10 , complete course for JEE and NEET , and also for the
+        repeaters.
+      </p>
+    </div>
+
+
+    <div class="container grid grid-three-col courses-images">
+      <div class="img-ovelay">
+        <img src="images/e1.jpg" alt="courses images " />
+        <div class="overlay">
+          <a href="6.html" target="_blank" class="common-heading">Class 6th</a>
+        </div>
+      </div>
+
+      <div class="img-ovelay ">
+        <img src="images/e2.jpg" alt="courses images " />
+        <div class="overlay">
+          <a href="7.html" target="_blank" class="common-heading">Class 7th</a>
+        </div>
+      </div>
+
+      <div class="img-ovelay ">
+        <img src="images/e3.jpg" alt="courses images " />
+        <div class="overlay">
+          <a href="" target="_blank" class="common-heading">Class 8th</a>
+        </div>
+      </div>
+      <div class="img-ovelay">
+        <img src="images/e4.jpg" alt="courses images " />
+        <div class="overlay">
+          <a href="" target="_blank" class="common-heading">Class 9th</a>
+        </div>
+      </div>
+      <div class="img-ovelay">
+        <img src="images/e5.jpg" alt="courses images " />
+        <div class="overlay">
+          <a href="" target="_blank" class="common-heading">Class 10th</a>
+        </div>
+      </div>
+      <div class="img-ovelay ">
+        <img src="images/e6.jpg" alt="courses images " />
+        <div class="overlay">
+          <a href="" target="_blank" class="common-heading">JEE</a>
+        </div>
+      </div>
+      <div class="img-ovelay ">
+        <img src="images/e7.jpg" alt="courses images " />
+        <div class="overlay">
+          <a href="" target="_blank" class="common-heading">NEET</a>
+        </div>
+      </div>
+      <div class="img-ovelay">
+        <img src="images/e8.jpg" alt="courses images " />
+        <div class="overlay">
+          <a href="" target="_blank" class="common-heading">JEE Repeat</a>
+        </div>
+      </div>
+      <div class="img-ovelay ">
+        <img src="images/e9.jpg" alt="courses images " />
+        <div class="overlay">
+          <a href="" target="_blank" class="common-heading">NEET Repeat</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+
+
+
+
+  <!-- ======================================== 
+       EduCAD Testimonial Section Start  
+    ========================================  -->
+
+  <section class="section section-testimonial ">
+    <div class="container">
+      <h2 class="common-heading">Happy Parents and Students</h2>
+    </div>
+    <!-- Slider main container -->
+    <!-- Swiper -->
+    <div class="swiper mySwiper container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+
+          <div class="swiper-client-msg">
+            <p>Pointing out exactly where the problem is in a student's data, while encouraging them to not give up.</p>
+          </div>
+          <div class="swiper-client-data grid grid-two-col ">
+            <figure>
+              <img src="images/a1.jpg" alt="">
+            </figure>
+            <div class="client-data-details">
+              <p>Arjun Gupta</p>
+              <p>Student</p>
+            </div>
+          </div>
+        </div>
+        <!-- slide end  -->
+        <div class="swiper-slide">
+
+          <div class="swiper-client-msg">
+            <p>Pointing out exactly where the problem is in a student's data, while encouraging them to not give up.</p>
+          </div>
+          <div class="swiper-client-data grid grid-two-col ">
+            <figure>
+              <img loading="lazy" src="images/download.png" alt="">
+            </figure>
+            <div class="client-data-details">
+              <p>Rishabh Singh</p>
+              <p>Father,Ravi Singh</p>
+            </div>
+          </div>
+        </div>
+        <!-- slide end  -->
+        <div class="swiper-slide">
+
+          <div class="swiper-client-msg">
+            <p>Pointing out exactly where the problem is in a student's data, while encouraging them to not give up.</p>
+          </div>
+          <div class="swiper-client-data grid grid-two-col ">
+            <figure>
+              <img src="images\a2.jpg" alt="">
+            </figure>
+            <div class="client-data-details">
+              <p>Ayush Varshney</p>
+              <p>Student</p>
+            </div>
+          </div>
+        </div>
+        <!-- slide end  -->
+        <div class="swiper-slide">
+
+          <div class="swiper-client-msg">
+            <p>Pointing out exactly where the problem is in a student's data, while encouraging them to not give up.</p>
+          </div>
+          <div class="swiper-client-data grid grid-two-col ">
+            <figure>
+              <img loading="lazy" src="images/a3.png" alt="">
+            </figure>
+            <div class="client-data-details">
+              <p>Priyanshu Mishra</p>
+              <p>Student</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- slide end  -->
+        <div class="swiper-slide">
+
+          <div class="swiper-client-msg">
+            <p>Pointing out exactly where the problem is in a student's data, while encouraging them to not give up.</p>
+          </div>
+          <div class="swiper-client-data grid grid-two-col ">
+            <figure>
+              <img src="images\a5.png" alt="">
+            </figure>
+            <div class="client-data-details">
+              <p>Ravish Sharma</p>
+              <p>Father,Utkarsh Sharma</p>
+            </div>
+          </div>
+        </div>
+        <!-- slide end  -->
+        <div class="swiper-slide">
+
+          <div class="swiper-client-msg">
+            <p>Pointing out exactly where the problem is in a student's data, while encouraging them to not give up.</p>
+          </div>
+          <div class="swiper-client-data grid grid-two-col ">
+            <figure>
+              <img src="images/a4.png" alt="">
+            </figure>
+            <div class="client-data-details">
+              <p>Prince Kumar</p>
+              <p>Student</p>
+            </div>
+          </div>
+        </div>
+        <!-- slide end  -->
+        <div class="swiper-slide">
+
+          <div class="swiper-client-msg">
+            <p>Pointing out exactly where the problem is in a student's data, while encouraging them to not give up.</p>
+          </div>
+          <div class="swiper-client-data grid grid-two-col ">
+            <figure>
+              <img src="images/a6.jpg" alt="">
+            </figure>
+            <div class="client-data-details">
+              <p>Akash Yadav</p>
+              <p>Father,Naman Yadav</p>
+            </div>
+          </div>
+        </div>
+        <!-- slide end  -->
+        <div class="swiper-slide">
+
+          <div class="swiper-client-msg">
+            <p>Pointing out exactly where the problem is in a student's data, while encouraging them to not give up.</p>
+          </div>
+          <div class="swiper-client-data grid grid-two-col ">
+            <figure>
+              <img src="images/a7.jpg" alt="">
+            </figure>
+            <div class="client-data-details">
+              <p>Ayush Agrawal</p>
+              <p>Student</p>
+            </div>
+          </div>
+        </div>
+        <!-- slide end  -->
+
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+    </div>
+  </section>
+
+
+  <!-- ======================================== 
+       EduCAD app Section Start  
+    ========================================  -->
+  <section class="section3 section-app ">
+    <div class="overlay"></div>
+    <div class="container">
+      <h2>Do <span> install </span>our app</h2>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum voluptates similique nulla vitae natus </p>
+      <a href="/contact.html" class="btn"> INSTALL NOW </a>
+    </div>
+  </section>
+
+
+  <!-- ======================================== 
+       EduCAD Subscription Section Start  
+    ========================================  -->
+  <div class="container">
+    <h1 class="common-heading">Our Subscriptions</h1>
+    <p class="sub_para">
+      We offer different Courses for class 6-9, class 10 , complete course for JEE and NEET , and also for the
+      repeaters.
+    </p>
+    <div class="grid2 grid-threes-col subscription">
+
+      <div class="coupon">
+        <div class="container1">
+          <h3><img src="images/logo.png" alt="" srcset="" class="logo1"></h3>
+        </div>
+        <img src="images/download.jpg" alt="Avatar" style="width:100%;">
+        <div class="container1" style="background-color:white">
+          <h2 class="purchase"><b>20% OFF YOUR PURCHASE</b></h2>
+          <p>Lorem ipsum dolor sit amet, et nam pertinax gloriatur.
+        </div>
+        <div class="container1">
+          <p class="para">Use Promo Code: <span class="promo">BOH232</span></p>
+          <p class="expire">Expires: May 29, 2022</p>
+        </div>
+      </div>
+      <div class="coupon">
+        <div class="container1">
+          <h3><img src="images/logo.png" alt="" srcset="" class="logo1"></h3>
+        </div>
+        <img src="images/download.jpg" alt="Avatar" style="width:100%;">
+        <div class="container1" style="background-color:white">
+          <h2 class="purchase"><b>20% OFF YOUR PURCHASE</b></h2>
+          <p>Lorem ipsum dolor sit amet, et nam pertinax gloriatur.
+        </div>
+        <div class="container1">
+          <p class="para">Use Promo Code: <span class="promo">BOH232</span></p>
+          <p class="expire">Expires: May 27, 2022</p>
+        </div>
+      </div>
+      <div class="coupon">
+        <div class="container1">
+          <h3><img src="images/logo.png" alt="" srcset="" class="logo1"></h3>
+        </div>
+        <img src="images/download.jpg" alt="Avatar" style="width:100%;">
+        <div class="container1" style="background-color:white">
+          <h2 class="purchase"><b>20% OFF YOUR PURCHASE</b></h2>
+          <p>Lorem ipsum dolor sit amet, et nam pertinax gloriatur.
+        </div>
+        <div class="container1">
+          <p class="para">Use Promo Code: <span class="promo">BOH232</span></p>
+          <p class="expire">Expires: May 27, 2022</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- ======================================== 
+       EduCAD contact us Section Start  
+    ========================================  -->
+
+  <section class="section section-contact section--hidden" id="contact-section">
+    <div class="container">
+      <h2 class="common-heading">contact us</h2>
+    </div>
+
+    <div class="section-contact-main container">
+      <form action="https://formspree.io/f/moqrynnb" method="POST">
+        <div class="grid grid-two-col">
+          <input type="text" name="username" id="" required placeholder="Name" autocomplete="off" />
+          <input type="email" name="email" required placeholder="Email" autocomplete="off" />
+        </div>
+        <div>
+          <input type="text" name="subject" placeholder="Subject" />
+        </div>
+        <div>
+          <textarea name="message" id="" placeholder="Message"></textarea>
+        </div>
+
+        <div>
+          <input type="submit" value="send message" class="btn" />
+        </div>
+      </form>
+    </div>
+  </section>
+
+
+
+
+  <!-- ======================================== 
+       EduCAD Footer Section Start  
+    ========================================  -->
+  <footer class="section3 section-footer ">
+    <div class="container grid grid-four-col">
+      <div class="f-about">
+        <h3>About</h3>
+        <p>EDUCAD is the best platform of providing quality education. EDUCAD delivers its services at any time and at
+          every corner of the world . EDUCAD is the future of online learning. We provide our services free or at very
+          affordable price.</p>
+      </div>
+
+      <div class="f-links">
+        <h3>Links</h3>
+        <ul>
+          <li><span>
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </span><a href="#">home</a></li>
+          <li><span>
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </span><a href="#explain">about</a></li>
+          <li><span>
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </span><a href="#services-section">services</a></li>
+          <li><span>
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </span><a href="#courses-section">Courses</a></li>
+
+          <li><span>
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </span><a href="#contact-section">contact</a></li>
+        </ul>
+      </div>
+
+      <div class="f-services">
+        <h3>Services</h3>
+        <ul>
+          <li><span>
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </span><a href="#services-section">Regular Tests</a></li>
+          <li><span>
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </span><a href="#services-section">Recorded lectures</a></li>
+          <li><span>
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </span><a href="#services-section">Performance Analysis</a></li>
+
+          <li><span>
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </span><a href="#services-section">Cost effecient Subscription</a></li>
+          <li><span>
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </span><a href="#services-section">Best guidance</a></li>
+        </ul>
+      </div>
+
+      <div class="f-address">
+        <h3>Have a Questions?</h3>
+        <address>
+          <div>
+            <p> <span>
+                <ion-icon name="location-outline"></ion-icon>
+              </span> Prayagraj, India </p>
+          </div>
+
+          <div>
+            <p> <span>
+                <ion-icon name="call-outline"></ion-icon>
+              </span> <a href="tel:+91123456789"> +91 9874563215 </a></p>
+          </div>
+
+          <div>
+            <p> <span>
+                <ion-icon name="mail-outline"></ion-icon>
+              </span> <a href="mailto:test@thapa.com"> ayushvarshney42003@gmail.com </a> </p>
+          </div>
+        </address>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="f-social-icons">
+        <a href="https://www.instagram.com/ayushvarshney971/" target="_blank">
+          <ion-icon class="icons" name="logo-instagram"></ion-icon>
+        </a>
+
+        <a href="https://github.com/Avtech04/EduCAD" target="_blank">
+          <ion-icon class="icons" name="logo-github"></ion-icon>
+        </a>
+
+        <a href="www.linkedin.com/in/ayush-varshney-03b882237" target="_blank">
+          <ion-icon class="icons" name="logo-linkedin"></ion-icon>
+        </a>
+      </div>
+
+      <div class="f-credits">
+        <p>Copyright ©2022 All rights reserved | EDUCAD private limited</p>
+      </div>
+    </div>
+
+  </footer>
+
+</body>
+<script src="https://kit.fontawesome.com/8df4627fa1.js" crossorigin="anonymous"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+<script>
+
+  // ========================================
+  //  scroll to top button
+  // ========================================
+  const sectionHero = document.querySelector(".section-hero");
+  const footerElm = document.querySelector(".section-footer");
+
+  const scrollElement = document.createElement("div");
+  scrollElement.classList.add("scrollTop-style");
+
+  // I am adding the button element inside the div element
+  scrollElement.innerHTML = ` <ion-icon name="arrow-up-outline" class="scroll-top"></ion-icon>`;
+
+  // add to the bottom of the page
+  footerElm.after(scrollElement);
+
+  // deleting the dom element
+  const scrollTop = () => {
+    sectionHero.scrollIntoView({ behavior: "smooth" });
+  };
+
+  document.querySelector(".scroll-top").addEventListener("click", scrollTop);
+
+  // ========================================
+  //  animated counter number
+  // ========================================
+
+  const dataSection = document.querySelector(".section-data-data");
+
+  const dataSectionObserve = (entries) => {
+    const [entry] = entries;
+    if (!entry.isIntersecting) return;
+    console.log(entries);
+
+
+    const counterNum = document.querySelectorAll(".counter-numbers");
+
+    const speed = 200;
+
+    counterNum.forEach((curNumber) => {
+      const updateNumber = () => {
+        const targetNumber = parseInt(curNumber.dataset.number);
+
+        const initialNumber = parseInt(curNumber.innerText);
+
+        const incrementNumber = Math.trunc(targetNumber / speed);
+
+
+        if (initialNumber < targetNumber) {
+          curNumber.innerText = `${initialNumber + incrementNumber}+`;
+          setTimeout(updateNumber, 10);
+        } else {
+          curNumber.innerText = `${targetNumber}+`;
+        }
+
+      };
+      updateNumber();
+    });
+  };
+
+  const dataSecObserver = new IntersectionObserver(dataSectionObserve, {
+    root: null,
+    threshold: 0,
+  });
+
+  dataSecObserver.observe(dataSection);
+
+  // ========================================
+  //  swiper 
+  // ========================================
+  function myFunction(widthSize) {
+    if (widthSize.matches) {
+      // If media query matches
+      const swiper = new Swiper(".swiper", {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
+
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+      });
+    } else {
+      const swiper = new Swiper(".swiper", {
+        slidesPerView: 2,
+        spaceBetween: 30,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+      });
+    }
+  }
+
+  const widthSize = window.matchMedia("(max-width: 780px)");
+  // Call listener function at run time
+  myFunction(widthSize);
+  // Attach listener function on state changes
+  widthSize.addListener(myFunction);
+
+
+
+
+
+
+</script>
+
+</html>
