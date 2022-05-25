@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Todo List | EduCAD</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Iconscout Link For Icons -->
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+  <style>
+    /* Import Google Font - Poppins */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    ::selection {
+      color: #ffff;
+      background: rgb(142, 73, 232);
+    }
+
+    body {
+      width: 100%;
+      height: 100vh;
+      /* overflow: hidden; */
+      padding: 10px;
+      background: linear-gradient(to bottom, #68EACC 0%, #497BE8 100%);
+    }
+
+    .wrapper {
+      background: #fff;
+      max-width: 400px;
+      width: 100%;
+      margin: 120px auto;
+      padding: 25px;
+      border-radius: 5px;
+      box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .wrapper header {
+      font-size: 30px;
+      font-weight: 600;
+    }
+
+    .wrapper .inputField {
+      margin: 20px 0;
+      width: 100%;
+      display: flex;
+      height: 45px;
+    }
+
+    .inputField input {
+      width: 85%;
+      height: 100%;
+      outline: none;
+      border-radius: 3px;
+      border: 1px solid #ccc;
+      font-size: 17px;
+      padding-left: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .inputField input:focus {
+      border-color: #8E49E8;
+    }
+
+    .inputField button {
+      width: 50px;
+      height: 100%;
+      border: none;
+      color: #fff;
+      margin-left: 5px;
+      font-size: 21px;
+      outline: none;
+      background: #8E49E8;
+      cursor: pointer;
+      border-radius: 3px;
+      opacity: 0.6;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    .inputField button:hover,
+    .footer button:hover {
+      background: #721ce3;
+    }
+
+    .inputField button.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .wrapper .todoList {
+      max-height: 250px;
+      overflow-y: auto;
+      margin-left: -33px;
+    }
+
+    .todoList li {
+      position: relative;
+      list-style: none;
+      margin-bottom: 8px;
+      background: #f2f2f2;
+      border-radius: 3px;
+      padding: 10px 15px;
+      cursor: default;
+      overflow: hidden;
+      word-wrap: break-word;
+    }
+
+    .todoList li .icon {
+      position: absolute;
+      right: -45px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #e74c3c;
+      width: 45px;
+      text-align: center;
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 0 3px 3px 0;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .todoList li:hover .icon {
+      right: 0px;
+    }
+
+    .wrapper .footer {
+      display: flex;
+      width: 100%;
+      margin-top: 20px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer button {
+      padding: 6px 10px;
+      border-radius: 3px;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-weight: 400;
+      font-size: 16px;
+      margin-left: 5px;
+      background: #8E49E8;
+      cursor: pointer;
+      user-select: none;
+      opacity: 0.6;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    .footer button.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
+
+    :root {
+      --header-height: 3rem;
+      --nav-width: 68px;
+      --first-color: #4723D9;
+      --first-color-light: #AFA5D9;
+      --white-color: #F7F6FB;
+      --body-font: 'Nunito', sans-serif;
+      --normal-font-size: 1rem;
+      --z-fixed: 100
+    }
+
+    *,
+    ::before,
+    ::after {
+      box-sizing: border-box
+    }
+
+    body {
+      position: relative;
+      margin: var(--header-height) 0 0 0;
+      padding: 0 1rem;
+      font-family: var(--body-font);
+      font-size: var(--normal-font-size);
+      transition: .5s
+    }
+
+    a {
+      text-decoration: none
+    }
+
+    .header {
+      width: 100%;
+      height: var(--header-height);
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1rem;
+      background-color: var(--first-color);
+      z-index: var(--z-fixed);
+      transition: .5s
+    }
+
+    .header_toggle {
+      color: white;
+      font-size: 2.5rem;
+      cursor: pointer;
+    }
+
+    .header_img {
+      width: 35px;
+      height: 35px;
+      display: flex;
+      justify-content: center;
+      border-radius: 50%;
+      overflow: hidden
+    }
+
+    .header_img img {
+      width: 40px
+    }
+
+    .l-navbar {
+      position: fixed;
+      top: 0;
+      left: -30%;
+      width: var(--nav-width);
+      height: 100%;
+      background-color: var(--first-color);
+      padding: .5rem 1rem 0 0;
+      transition: .5s;
+      z-index: var(--z-fixed)
+    }
+
+    .nav {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden
+    }
+
+    .nav_logo,
+    .nav_link {
+      display: grid;
+      grid-template-columns: max-content max-content;
+      align-items: center;
+      column-gap: 1rem;
+      padding: .5rem 0 .5rem 1.5rem
+    }
+
+    .nav_logo {
+      margin-bottom: 2rem
+    }
+
+    .nav_logo-icon {
+      font-size: 1.25rem;
+      color: var(--white-color)
+    }
+
+    .nav_logo-name {
+      color: var(--white-color);
+      font-weight: 700
+    }
+
+    .nav_link {
+      position: relative;
+      color: white;
+      margin-bottom: 1rem;
+      transition: .3s
+    }
+
+    .nav_link:hover {
+      color: white
+    }
+
+    .nav_icon {
+      font-size: 1.25rem
+    }
+
+    .show {
+      left: 0
+    }
+
+    .body-pd {
+      padding-left: calc(var(--nav-width) + 1rem)
+    }
+
+    .active {
+      color: var(--white-color)
+    }
+
+    .active::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 2px;
+      height: 32px;
+      background-color: var(--white-color)
+    }
+
+    .height-100 {
+      height: 100vh
+    }
+
+    @media screen and (min-width: 768px) {
+      body {
+        margin: calc(var(--header-height) + 1rem) 0 0 0;
+        padding-left: calc(var(--nav-width) + 2rem)
+      }
+
+      .header {
+        height: calc(var(--header-height) + 1rem);
+        padding: 0 2rem 0 calc(var(--nav-width) + 2rem)
+      }
+
+      .header_img {
+        width: 40px;
+        height: 40px
+      }
+
+      .header_img img {
+        width: 45px
+      }
+
+      .l-navbar {
+        left: 0;
+        padding: 1rem 1rem 0 0
+      }
+
+      .show {
+        width: calc(var(--nav-width) + 156px)
+      }
+
+      .body-pd {
+        padding-left: calc(var(--nav-width) + 188px)
+      }
+    }
+
+    .navbar-item {
+      list-style: none;
+      font-size: 1.5rem;
+      padding: 13px 2px 0px 2px;
+      text-transform: capitalize;
+      color: white;
+    }
+
+    .navbar-link {
+      color: white;
+    }
+  </style>
+</head>
+
+<body id="body-pd">
+  <header class="header" id="header">
+    <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+
+
+    <!-- <ul>  <li class="navbar-item active"></li>
+      <a class="navbar-link" href="#"> <i class="fa-solid fa-user-large"></i><?php echo "  Welcome ". $_SESSION['username']?></a>
+  </li>
+  </ul> -->
+  </header>
+  <div class="l-navbar" id="nav-bar">
+    <nav class="nav">
+      <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span
+            class="nav_logo-name">EDUCAD</span> </a>
+        <div class="nav_list"> <a href="welcome.php" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i>
+            <span class="nav_name">Dashboard</span> </a> <a href="video.html" class="nav_link">
+            <!-- <i class='bx bx-user nav_icon'></i>  -->
+            <i class="fa-solid fa-video"></i><span class="nav_name">Video</span>
+          </a> <a href="question.html" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span
+              class="nav_name">Questions</span> </a> <a href="testview.html" class="nav_link">
+            <!-- <i class='bx bx-bookmark nav_icon'></i>  -->
+            <i class="fa-solid fa-newspaper"></i> <span class="nav_name">Tests</span>
+          </a>
+          <a href="note.html" class="nav_link">
+            <!-- <i class='bx bx-user nav_icon'></i>  -->
+            <i class="fa-regular fa-envelope-open-text"></i><span class="nav_name">Create your Notes</span>
+          </a>
+          <a href="doubt.php" class="nav_link">
+            <!-- <i class='bx bx-folder nav_icon'></i>  -->
+            <i class="fa-solid fa-circle-question"></i></i><span class="nav_name">Doubts</span>
+          </a> <a href="stat.html" class="nav_link">
+            <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
+            <span class="nav_name">Performance</span> </a>
+          <a href="todo.html" class="nav_link">
+            <!-- <i class='bx bx-user nav_icon'></i>  -->
+            <i class="fa-solid fa-circle-check"></i><span class="nav_name">To-Do list</span>
+          </a>
+        </div>
+      </div> <a href="logout.php" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span
+          class="nav_name">SignOut</span> </a>
+    </nav>
+  </div>
+  <div class="wrapper">
+    <header>Add your todo`s</header>
+    <div class="inputField">
+      <input type="text" placeholder="Add your new todo">
+      <button><i class="fas fa-plus"></i></button>
+    </div>
+    <ul class="todoList">
+      <!-- data are comes from local storage -->
+    </ul>
+    <div class="footer">
+      <span>You have <span class="pendingTasks"></span> Pending Works</span>
+      <button>Clear All</button>
+    </div>
+  </div>
+
+  <script src="https://kit.fontawesome.com/8df4627fa1.js" crossorigin="anonymous"></script>
+
+  <script>
+    // getting all required elements
+    const inputBox = document.querySelector(".inputField input");
+    const addBtn = document.querySelector(".inputField button");
+    const todoList = document.querySelector(".todoList");
+    const deleteAllBtn = document.querySelector(".footer button");
+    // onkeyup event
+    inputBox.onkeyup = () => {
+      let userEnteredValue = inputBox.value; //getting user entered value
+      if (userEnteredValue.trim() != 0) { //if the user value isn't only spaces
+        addBtn.classList.add("active"); //active the add button
+      } else {
+        addBtn.classList.remove("active"); //unactive the add button
+      }
+    }
+    showTasks(); //calling showTask function
+    addBtn.onclick = () => { //when user click on plus icon button
+      let userEnteredValue = inputBox.value; //getting input field value
+      let getLocalStorageData = localStorage.getItem("New Todo"); //getting localstorage
+      if (getLocalStorageData == null) { //if localstorage has no data
+        listArray = []; //create a blank array
+      } else {
+        listArray = JSON.parse(getLocalStorageData);  //transforming json string into a js object
+      }
+      listArray.push(userEnteredValue); //pushing or adding new value in array
+      localStorage.setItem("New Todo", JSON.stringify(listArray)); //transforming js object into a json string
+      showTasks(); //calling showTask function
+      addBtn.classList.remove("active"); //unactive the add button once the task added
+    }
+    function showTasks() {
+      let getLocalStorageData = localStorage.getItem("New Todo");
+      if (getLocalStorageData == null) {
+        listArray = [];
+      } else {
+        listArray = JSON.parse(getLocalStorageData);
+      }
+      const pendingTasksNumb = document.querySelector(".pendingTasks");
+      pendingTasksNumb.textContent = listArray.length; //passing the array length in pendingtask
+      if (listArray.length > 0) { //if array length is greater than 0
+        deleteAllBtn.classList.add("active"); //active the delete button
+      } else {
+        deleteAllBtn.classList.remove("active"); //unactive the delete button
+      }
+      let newLiTag = "";
+      listArray.forEach((element, index) => {
+        newLiTag += `<li>${element}<span class="icon" onclick="deleteTask(${index})"><i class="fas fa-trash"></i></span></li>`;
+      });
+      todoList.innerHTML = newLiTag; //adding new li tag inside ul tag
+      inputBox.value = ""; //once task added leave the input field blank
+    }
+    // delete task function
+    function deleteTask(index) {
+      let getLocalStorageData = localStorage.getItem("New Todo");
+      listArray = JSON.parse(getLocalStorageData);
+      listArray.splice(index, 1); //delete or remove the li
+      localStorage.setItem("New Todo", JSON.stringify(listArray));
+      showTasks(); //call the showTasks function
+    }
+    // delete all tasks function
+    deleteAllBtn.onclick = () => {
+      listArray = []; //empty the array
+      localStorage.setItem("New Todo", JSON.stringify(listArray)); //set the item in localstorage
+      showTasks(); //call the showTasks function
+    }
+
+    document.addEventListener("DOMContentLoaded", function (event) {
+
+      const showNavbar = (toggleId, navId, bodyId, headerId) => {
+        const toggle = document.getElementById(toggleId),
+          nav = document.getElementById(navId),
+          bodypd = document.getElementById(bodyId),
+          headerpd = document.getElementById(headerId)
+
+        // Validate that all variables exist
+        if (toggle && nav && bodypd && headerpd) {
+          toggle.addEventListener('click', () => {
+            // show navbar
+            nav.classList.toggle('show')
+            // change icon
+            toggle.classList.toggle('bx-x')
+            // add padding to body
+            bodypd.classList.toggle('body-pd')
+            // add padding to header
+            headerpd.classList.toggle('body-pd')
+          })
+        }
+      }
+
+      showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
+
+      /*===== LINK ACTIVE =====*/
+      const linkColor = document.querySelectorAll('.nav_link')
+
+      function colorLink() {
+        if (linkColor) {
+          linkColor.forEach(l => l.classList.remove('active'))
+          this.classList.add('active')
+        }
+      }
+      linkColor.forEach(l => l.addEventListener('click', colorLink))
+
+      // Your code to run since DOM is loaded and ready
+    });
+  </script>
+
+</body>
+
+</html>
