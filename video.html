@@ -239,6 +239,21 @@
       display: grid;
       gap: 2rem;
     }
+    @media screen  and (max-width: 676px) and (min-width:366px){
+.grid-three-col{
+  grid-template-columns: repeat(1,1fr);
+
+}
+.grid{
+  margin: auto;
+}
+    }
+    @media screen  and (max-width: 1200px) and (min-width:678px){
+.grid-three-col{
+  grid-template-columns: repeat(2,1fr);
+
+}
+    }
   </style>
 </head>
 
@@ -385,7 +400,7 @@
 
         showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
 
-        
+       
         const linkColor = document.querySelectorAll('.nav_link')
 
         function colorLink() {
