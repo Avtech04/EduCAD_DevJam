@@ -238,7 +238,7 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !==true)
       position: relative;
       top: 0;
       left: -32px;
-      width: 105%
+      width: 134%
     }
 
     .content {
@@ -570,7 +570,103 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !==true)
       }
     }
 
+    @media (max-width: 568px){
+      .content{
+        position: absolute;
+    top: 5rem;
+    left: 4rem;
+      }
+      .hero_heading {
+    font-size: 3rem;
+    color: white;
+    font-weight: 900;
+}
+.faqs{
+width: 90%;
+    margin: 38px auto;
+    box-shadow: var(--shadpw);
+    padding: 9px 38px;
+    }
+  
+.hero_para {
+    font-size: 1.7rem;
+    color: white;
+}
+.chat-bar-collapsible {
+    position: fixed;
+    bottom: 0;
+    right: 2%;
+    box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%);
+}
+.collapsibleit {
+    background-color: rgb(82, 151, 255);
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 208px;
+    text-align: left;
+    outline: none;
+    font-size: 18px;
+    border-radius: 10px 10px 0px 0px;
+    border: 3px solid white;
+    border-bottom: none;
+}
+.outer-container {
+    width: 207px;
+    min-height: 400px;
+    bottom: 0%;
+    position: relative;
+}
+    
+}
 
+    @media screen  and (max-width: 686px) and (min-width:569px){
+      .content{
+        position: absolute;
+    top: 5rem;
+    left: 4rem;
+      }
+      .hero_heading {
+    font-size: 5rem;
+    color: white;
+    font-weight: 900;
+}
+.hero_para {
+    font-size: 1.8rem;
+    color: white;
+}
+.chat-bar-collapsible {
+    position: fixed;
+    bottom: 0;
+    right: 12%;
+    box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%);
+}
+.collapsibleit {
+    background-color: rgb(82, 151, 255);
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 208px;
+    text-align: left;
+    outline: none;
+    font-size: 18px;
+    border-radius: 10px 10px 0px 0px;
+    border: 3px solid white;
+    border-bottom: none;
+}
+.outer-container {
+    width: 207px;
+    min-height: 400px;
+    bottom: 0%;
+    position: relative;
+}
+.faqs{
+width: 90%;
+    margin: 38px auto;
+    box-shadow: var(--shadpw);
+    padding: 9px 38px;
+    }
+  }
   </style>
 </head>
 

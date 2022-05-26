@@ -380,6 +380,11 @@
       width: 98%;
       outline: none;
     }
+    @media screen  and (max-width: 989px) {
+.grid-two-col{
+  grid-template-columns: repeat(1,1fr);
+
+}
   </style>
 </head>
 
